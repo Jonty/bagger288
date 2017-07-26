@@ -1,0 +1,11 @@
+backports.tempfile==1.0rc1
+backports.weakref==1.0rc1
+gitdb2==2.0.2
+GitPython==2.1.5
+idna==2.5
+pyenchant==1.6.8
+PyGithub==1.35
+PyJWT==1.5.2
+smmap2==2.0.3
+uritools==2.0.0
+urlextract==0.4.1
