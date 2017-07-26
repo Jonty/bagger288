@@ -131,9 +131,9 @@ def print_commits(commits):
         cprint('commit %s' % commit['commit_sha'], colour.YELLOW)
         print('Author: %s' % commit['author'])
         print('Date:   %s' % commit['date'].strftime('%Y-%m-%d %H:%M:%S') + ' (%s)' % (commit['author_tz_offset']/60/60))
-        print
+        print()
         print('    %s' % commit['short_message'])
-        print
+        print()
         
         outputted_examples = defaultdict(int)
         for blob in commit['suspicious_blobs']:
