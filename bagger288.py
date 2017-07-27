@@ -221,11 +221,23 @@ def string_is_sequence(string):
         prev = code
     return transitions < (len(string) / 3)
 
+
+filtered_strings = [
+    "PublicKeyToken",
+    "publicKeyToken",
+]
+def string_is_filtered(line, string):
+    for filtered in filtered_strings:
+        if filtered in line:
+            return True
+    return False
+
 def string_is_significant(line, string, shannon_score):
     return (string_shannon_entropy(string) > shannon_score) and \
         not string_is_probably_language(string) and \
         not string_is_sequence(string) and \
-        not string_in_url(line, string)
+        not string_in_url(line, string) and \
+        not string_is_filtered(line, string)
 
 def find_suspicious_strings(line):
     found = []
