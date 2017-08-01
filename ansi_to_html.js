@@ -7,5 +7,5 @@ fs.readFile(process.argv[2], 'utf8', function (err, ansi_txt) {
 	}
 	var ansi_up = new AU.default;
 	var html = ansi_up.ansi_to_html(ansi_txt);
-	process.stdout.write('<pre style="line-height: 1.3; padding:1em; background: black; color: lightgray;">' + html + '</pre>');
+	process.stdout.write('<body style="line-height: 1.3; padding:1em; background: black; color: lightgray;"><pre>' + html + '</pre></body>');
 });

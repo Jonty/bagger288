@@ -225,6 +225,7 @@ def string_is_sequence(string):
 filtered_strings = [
     "PublicKeyToken",
     "publicKeyToken",
+    "SegmentAnalyticsPropertyID",
 ]
 def string_is_filtered(line, string):
     for filtered in filtered_strings:
@@ -232,12 +233,16 @@ def string_is_filtered(line, string):
             return True
     return False
 
+def string_is_numbers(string):
+    return string.isdigit()
+
 def string_is_significant(line, string, shannon_score):
     return (string_shannon_entropy(string) > shannon_score) and \
         not string_is_probably_language(string) and \
         not string_is_sequence(string) and \
         not string_in_url(line, string) and \
-        not string_is_filtered(line, string)
+        not string_is_filtered(line, string) and \
+        not string_is_numbers(string)
 
 def find_suspicious_strings(line):
     found = []
@@ -282,6 +287,7 @@ filters = [
     ".*\.css$",
     ".*\.scss$",
     ".*\.lock$",
+    ".*\.rdl$",
 ]
 def is_filtered_path(path):
     for filter in filters:
